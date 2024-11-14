@@ -59,37 +59,37 @@
 
                         @auth
                             @if (auth()->user()->hasRole('admin'))
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a href="{{ route('admin.services.index') }}" class="nav-link" id="main_services">
                                         <span class="nav-link-inner--text">Services</span>
                                     </a>
-                                </li>
+                                </li> -->
                             @else
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a href="{{ route('customer.services.index') }}" class="nav-link" id="main_services">
                                         <span class="nav-link-inner--text">Services</span>
                                     </a>
-                                </li>
+                                </li> -->
                             @endif
 
                             @if (auth()->user()->hasRole('admin'))
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a href="{{ route('admin.bookings.index') }}" class="nav-link">
                                         <span class="nav-link-inner--text"> Appointment</span>
                                     </a>
-                                </li>
+                                </li> -->
                             @else
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a href="{{ route('customer.services.index') }}" class="nav-link">
                                         <span class="nav-link-inner--text"> Appointment</span>
                                     </a>
-                                </li>
+                                </li> -->
                             @endif
 
                         @endauth
 
                         @guest
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a href="{{ route('customer.services.index') }}" class="nav-link" id="main_services">
                                     <span class="nav-link-inner--text">Services</span>
                                 </a>
@@ -97,7 +97,7 @@
                             <a href="{{ route('customer.services.index') }}" class="nav-link">
                                 <span class="nav-link-inner--text"> Appointment</span>
                             </a>
-                            </li>
+                            </li> -->
                         @endguest
 
                         <li class="nav-item">

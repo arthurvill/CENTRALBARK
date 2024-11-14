@@ -4,7 +4,7 @@
 
             <div class="col-md-4 pt-5">
                 <h2 class="h2 text-success border-bottom pb-3 border-secondary logo">
-                    <img class="img-fluid" src="{{ asset('img/logo/logo.png') }}" width="200" alt="logo">
+                    <img class="img-fluid" src="{{ asset('img/logo/logo2.png') }}" width="200" alt="logo">
                 </h2>
                 <ul class="list-unstyled text-white footer-link-list">
                     <li class="text-white">
