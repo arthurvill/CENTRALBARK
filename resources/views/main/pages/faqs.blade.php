@@ -1,66 +1,49 @@
 @extends('layouts.main.app')
 
-@section('title', "$app_name | FAQS")
+@section('title', "$app_name | Contact Us")
 
 @section('content')
-    <div class="container my-auto"><br><br><br><br>
-        <div class="card card-body">
+    <div class="container my-5">
+        <div class="card shadow-lg border-0 rounded">
             <div class="row justify-content-center">
-                <div class="col-md-6 order-0 order-lg-1">
-                    <img class="img-fluid d-block mx-auto" src="{{ asset('img/main/faqs.svg') }}" alt="faqs">
+                <div class="col-md-6">
+                    <img class="img-fluid d-block mx-auto" src="{{ asset('img/main/section-3/contact.svg') }}" alt="Contact Us">
                 </div>
-                <div class="col-md-6 order-1 order-lg-0">
-                    <!-- FAQ 1 -->
-                    <button class="btn btn-link p-0 text-left w-100" type="button" data-toggle="collapse" data-target="#faq1" aria-expanded="false" aria-controls="faq1">
-                        <h3 class="font-weight-normal">Where is your clinic located?</h3>
-                    </button>
-                    <div id="faq1" class="collapse">
-                        <p class="text-muted">We’re located at Tungkop, Minglanilla, Cebu, Philippines.</p>
-                    </div>
-                    <br>
+                <div class="col-md-6">
+                    <h3 class="font-weight-bold text-center mb-4">Contact Information</h3>
+                    <p class="text-muted text-center mb-5">You can reach us through any of the following methods:</p>
 
-                    <!-- FAQ 2 -->
-                    <button class="btn btn-link p-0 text-left w-100" type="button" data-toggle="collapse" data-target="#faq2" aria-expanded="false" aria-controls="faq2">
-                        <h3 class="font-weight-normal">Do you accept walk-in patients?</h3>
-                    </button>
-                    <div id="faq2" class="collapse">
-                        <p class="text-muted">Yes! We surely cater walk-in patients, especially those who need urgent medical attention. Just visit our clinic.</p>
+                    <!-- Phone -->
+                    <div class="contact-info-item mb-4 p-4 border rounded-lg shadow-sm">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-phone-alt fa-2x mr-4 text-primary"></i>
+                            <div>
+                                <h5 class="mb-1">Phone</h5>
+                                <p class="text-muted">+63 912 345 6789</p>
+                            </div>
+                        </div>
                     </div>
-                    <br>
 
-                    <!-- FAQ 3 -->
-                    <button class="btn btn-link p-0 text-left w-100" type="button" data-toggle="collapse" data-target="#faq3" aria-expanded="false" aria-controls="faq3">
-                        <h3 class="font-weight-normal">Do you have grooming services?</h3>
-                    </button>
-                    <div id="faq3" class="collapse">
-                        <p class="text-muted">Yes! We offer grooming services, with prices varying depending on your pet's size and weight.</p>
+                    <!-- Email -->
+                    <div class="contact-info-item mb-4 p-4 border rounded-lg shadow-sm">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-envelope fa-2x mr-4 text-primary"></i>
+                            <div>
+                                <h5 class="mb-1">Email</h5>
+                                <p class="text-muted">centralbarkclinic@gmail.com</p>
+                            </div>
+                        </div>
                     </div>
-                    <br>
 
-                    <!-- FAQ 4 -->
-                    <button class="btn btn-link p-0 text-left w-100" type="button" data-toggle="collapse" data-target="#faq4" aria-expanded="false" aria-controls="faq4">
-                        <h3 class="font-weight-normal">Do you have an anti-distemper and anti-parvo vaccine?</h3>
-                    </button>
-                    <div id="faq4" class="collapse">
-                        <p class="text-muted">Yes! We offer anti-distemper and anti-parvo vaccines. Visit our clinic for more details.</p>
-                    </div>
-                    <br>
-
-                    <!-- FAQ 5 -->
-                    <button class="btn btn-link p-0 text-left w-100" type="button" data-toggle="collapse" data-target="#faq5" aria-expanded="false" aria-controls="faq5">
-                        <h3 class="font-weight-normal">Is your clinic 24 hours open?</h3>
-                    </button>
-                    <div id="faq5" class="collapse">
-                        <p class="text-muted">No, our clinic operates from 10:00 AM to 5:00 PM, Monday to Saturday.</p>
-                    </div>
-                    <br>
-
-                    <!-- FAQ 6 -->
-                    <button class="btn btn-link p-0 text-left w-100" type="button" data-toggle="collapse" data-target="#faq6" aria-expanded="false" aria-controls="faq6">
-                        <h3 class="font-weight-normal">Where can I send my payment?</h3>
-                    </button>
-                    <div id="faq6" class="collapse">
-                        <p class="text-muted">We accept GCash and Cash payments only.</p>
+                    <!-- Address -->
+                    <div class="contact-info-item mb-4 p-4 border rounded-lg shadow-sm">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-map-marker-alt fa-2x mr-4 text-primary"></i>
+                            <div>
+                                <h5 class="mb-1">Address</h5>
+                                <p class="text-muted">Tungkop, Minglanilla, Cebu, Philippines</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -70,25 +53,61 @@
 
 @section('styles')
     <style>
-        .faq-item {
-            transition: all 0.3s ease;
-        }
-        .faq-item:hover {
-            background-color: #f8f9fa;
-            border-radius: 5px;
+        /* Card styling for contact info */
+        .contact-info-item {
+            background-color: #f9f9f9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Make button text responsive */
+        .contact-info-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-info-item i {
+            color: #007bff; /* Blue icon color */
+        }
+
+        .contact-info-item h5 {
+            color: #333;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .contact-info-item p {
+            color: #555;
+        }
+
+        /* Responsive layout */
         @media (max-width: 768px) {
-            .faq-item h3 {
-                font-size: 1.1rem;
+            .contact-info-item h5 {
+                font-size: 1.15rem;
             }
+            .contact-info-item p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Additional styles for the container and cards */
+        .card {
+            background-color: #ffffff;
+            padding: 30px;
+        }
+
+        .card h3 {
+            font-size: 2rem;
+            color: #023e8a;
+            font-weight: 800!important;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            color: #666;
         }
     </style>
 @endsection
 
 @section('scripts')
-    <script>
-        // Optional: You can add custom JS here to customize the collapse behavior or styling if needed
-    </script>
+    <!-- FontAwesome icons for phone, email, and address -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 @endsection

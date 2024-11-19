@@ -43,7 +43,8 @@
             <div class="navbar-inner">
                 <!-- Collapse -->
                 <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-                    <h5 class="font-weight-normal p-0 text-muted mt-2 mt-md-0 mb-1">
+                <h5 class="font-weight-bold p-0 text-muted mt-2 mt-md-0 mb-1" 
+                style="font-size: 14px !important; color: black !important; margin-bottom: 20px !important;">
                         {{ auth()->user()->name }}
                     </h5>
                     <!-- Nav items -->
@@ -293,35 +294,40 @@
 
                     </ul>
                     <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <div class="media align-items-center">
-                                    <span class="avatar avatar-sm rounded-circle">
-                                        <img src="{{ handleNullAvatar(auth()->user()->avatar_profile) }}"
-                                            class="avatar rounded-circle" alt="Image placeholder">
-                                    </span>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu  dropdown-menu-right ">
-                                <div class="dropdown-header noti-title">
-                                    <h6 class="text-overflow m-0">Settings</h6>
-                                </div>
-                                <a href="{{ route('profile.index') }}" class="dropdown-item">
-                                    <i class="ni ni-single-02"></i>
-                                    <span>Profile</span>
-                                </a>
+                    <li class="nav-item dropdown">
+    <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <div class="media align-items-center">
+            <span class="avatar avatar-sm rounded-circle">
+                <img src="{{ handleNullAvatar(auth()->user()->avatar_profile) }}"
+                    class="avatar rounded-circle" alt="Image placeholder">
+            </span>
+        </div>
+    </a>
+    <div class="dropdown-menu  dropdown-menu-right ">
+        <div class="dropdown-header noti-title">
+            <h6 class="text-overflow m-0">Settings</h6>
+        </div>
+        <a href="{{ route('profile.index') }}" class="dropdown-item">
+            <i class="ni ni-single-02"></i>
+            <span>Profile</span>
+        </a>
+        <!-- <a href="{{ route('main.pages.home') }}" 
+   class="dropdown-item @if (Route::is('main.pages.home')) active @endif">
+   <i class="fas fa-home"></i>
+   <span>Home</span>
+</a> -->
 
-                                <div class="dropdown-divider"></div>
-                                <a href="javascript:void(0)" class="dropdown-item"
-                                    onclick="confirm('Do you want to Logout?', '', 'Yes').then(res => res.isConfirmed ? $('#logout').submit() : false)">
-                                    <i class="fas fa-power-off"></i>
-                                    <span>Logout</span>
-                                </a>
-                                <form action="{{ route('auth.logout') }}" method="post" id="logout">@csrf
-                                </form>
-                            </div>
-                        </li>
+        <div class="dropdown-divider"></div>
+        <a href="javascript:void(0)" class="dropdown-item"
+            onclick="confirm('Do you want to Logout?', '', 'Yes').then(res => res.isConfirmed ? $('#logout').submit() : false)">
+            <i class="fas fa-power-off"></i>
+            <span>Logout</span>
+        </a>
+        <form action="{{ route('auth.logout') }}" method="post" id="logout">@csrf</form>
+    </div>
+</li>
+
                     </ul>
                 </div>
             </div>

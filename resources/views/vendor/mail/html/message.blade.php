@@ -3,7 +3,7 @@
 {{-- Header --}}
 @slot('header')
 @component('mail::header', ['url' => config('app.url')])
-<img class="img-fluid rounded-circle" src="https://i.ibb.co/DfycYHj/logo.png" width="150" alt="logo">
+<img class="img-fluid rounded-circle" src="https://i.ibb.co/4KY9Tq4/logo2.png" width="150" alt="logo2">
 @endcomponent
 @endslot
 

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <img class="img-fluid" src="{{ asset('img/logo/logo.png') }}" width="100" alt="logo">
+        <img class="img-fluid" src="{{ asset('img/logo/logo2.png') }}" width="100" alt="logo">
         <h4 class="text-center">
             <a class="text-dark text-decoration-none" href="{{ route('admin.general_reports.index') }}?tab=tables">
                 {{ config('app.name') }} - Report Summary

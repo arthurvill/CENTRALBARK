@@ -5,7 +5,7 @@
         <img class="img-fluid" src="{{ asset('img/logo/logo.png') }}" width="100" alt="logo">
         <h4 class="text-center">
             <a class="text-dark text-decoration-none" href="{{ route('staff.general_reports.index') }}?tab=tables">
-                {{ config('app.name') }} - List of Patients By Date Range and Service Report
+                {{ config('app.name') }} - Report Summary
             </a>
         </h4>
         <h6 class="text-center">
@@ -20,7 +20,6 @@
                 <span>Breed: {{ $results[0]->pet->breed }}</span> --}}
             </div>
             <div class="col-md-6 text-right">
-                {{-- <span>Owner: {{ $results[0]->pet->customer->full_name }}</span> <br> --}}
                 <span> Date Schedule: {{ formatDate($results[0]->schedule->date_time_start) }}
                     at {{ formatDate($results[0]->schedule->date_time_start, 'time') }}
                     - {{ formatDate($results[0]->schedule->date_time_end, 'time') }}
@@ -28,24 +27,11 @@
             </div>
         </div>
 
-        {{-- Row 2 --}}
-        {{-- <div class="row">
-            <div class="col-md-8">
-                Birthday: {{ formatDate($results[0]->pet->birth_date) }}
-            </div>
-            <div class="col-md-4 text-right">
-                Age: {{ getPetAge($results[0]->pet->birth_date) }}
-
-                <span class="ml-3">
-                    Sex: {{ $results[0]->pet->customer->sex }}
-                </span>
-            </div>
-        </div> --}}
-
         <br><br>
-        <form class="d-print-none" action="{{ route('admin.print.handle') }}" method="GET">
-            <div class="input-group input-group-outline ">
-                <input type="hidden" name="records" value="general_report">
+
+        <form class="d-print-none" action="{{ route('staff.print.handle') }}" method="GET">
+            <div class="input-group input-group-outline">
+                <input type="hidden" name="records" value="patients_report_summary">
                 <input type="hidden" name="execute" value="1">
 
                 <input class="form-control" type="text" name="date_started_at" placeholder="Date Started"
@@ -54,6 +40,7 @@
                 <input class="form-control" type="text" name="date_ended_at" placeholder="Date Ended"
                     onfocus="(this.type = 'date')"
                     value="{{ request('date_ended_at') ? formatDate(request('date_ended_at'), 'dateInput') : '' }}">
+
                 <select class="form-control" name="service">
                     <option value="">-- Select Service --</option>
                     @foreach ($available_service_categories as $available_service_category)
@@ -66,6 +53,7 @@
                         </optgroup>
                     @endforeach
                 </select>
+
                 <button class="btn btn-sm btn-success">Filter</button>
                 <button type="submit" class="btn btn-sm btn-warning">Print</button>
             </div>
@@ -76,37 +64,44 @@
                 <tr>
                     <th>#</th>
                     <th>Patient</th>
-                    <th>Services</th>
-                    <th>Date Schedule</th>
+                    <th>Service</th>
+                    <th>Date</th>
                     <th>Reserved At</th>
-                    {{-- <th>Type</th> --}}
                     <th>Status</th>
+                    <th>Results</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                @forelse ($results as $result)
+                @forelse ($results as  $result)
                     <tr>
                         <td>{{ $loop->index + 1 }}</td>
-                        <td>
-                            {{ $result->pet->name }}
-                        </td>
-                        <td>
-                            {{ $result->schedule->service->name }}
-                        </td>
-
+                        <td>{{ $result->pet->name }}</td>
+                        <td>{{ $result->schedule->service->name }}</td>
                         <td>
                             {{ formatDate($result->schedule->date_time_start) . ' at ' . formatDate($result->schedule->date_time_start, 'time') . ' - ' . formatDate($result->schedule->date_time_end, 'time') }}
                         </td>
-
+                        <td>{{ formatDate($result->created_at) }}</td>
+                        <td>{{ strip_tags(handleBookingStatus($result->status)) }}</td>
                         <td>
-                            {{ formatDate($result->created_at) }}
-                        </td>
-                        {{-- <td>
-                            {{ strip_tags(isOnline($result->is_online)) }}
-
-                        </td> --}}
-                        <td>
-                            {{ strip_tags(handleBookingStatus($result->status)) }}
+                            @if ($result->results->isNotEmpty())
+                                <table class="table table-sm table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Subject</th>
+                                            <th>Remark</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($result->results as $result)
+                                            <tr>
+                                                <td>{{ $result->subject }}</td>
+                                                <td>{{ $result->remark }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
                         </td>
                     </tr>
                 @empty
@@ -114,10 +109,8 @@
                         <td>Records Not Found</td>
                     </tr>
                 @endforelse
-
             </tbody>
         </table>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -134,7 +127,7 @@
             execute == true ? print() : false
         });
         onafterprint = function() {
-            window.location.href = @json(route('admin.general_reports.index') . '?tab=tables');
+            window.location.href = @json(route('staff.general_reports.index') . '?tab=tables');
         }
     </script>
 @endsection

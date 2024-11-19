@@ -94,7 +94,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 d-flex align-self-stretch">
+                    <!-- <div class="col-12 d-flex align-self-stretch">
                         <div class="card w-100">
                             <div class="card-header ">
                                 <div class="row align-items-center">
@@ -113,14 +113,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body d-flex and flex-column">
+                            <div class="card-body d-flex and flex-column"> -->
                                 <!-- Chart -->
-                                <div>
+                                <!-- <div>
                                     <canvas id="chart_total_monthly_customer"></canvas>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-12 d-flex align-self-stretch">
                         <div class="card w-100">
                             <div class="card-header ">
@@ -211,16 +211,16 @@
                             </select>
                             <input type="hidden" name="tab" value="tables">
                             <button class="btn btn-sm btn-primary">Filter</button>
-                            <a href="{{ route('staff.print.handle') }}?records=general_report"
+                            <!-- <a href="{{ route('staff.print.handle') }}?records=general_report"
                                 class="btn btn-sm btn-success">Print
-                            </a>
+                            </a> -->
 
                         </div>
                     </div>
                 </form>
                 <br>
                 {{-- Start Row --}}
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-12 col-md-12 d-flex align-self-stretch">
                         <div class="card w-100">
                             <div class="card-header ">
@@ -294,7 +294,7 @@
 
 
                     </div>
-                </div>
+                </div> -->
                 {{-- End Row --}}
 
                 <br>

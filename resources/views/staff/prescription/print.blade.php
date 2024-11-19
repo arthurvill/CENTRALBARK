@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <img class="img-fluid" src="{{ asset('img/logo/logo.png') }}" width="100" alt="logo">
+        <img class="img-fluid" src="{{ asset('img/logo/logo2.png') }}" width="100" alt="logo">
         <h4 class="text-center">
             <a class="text-dark text-decoration-none" href="{{ route('staff.bookings.show', $booking) }}?tab=tables">
                 Central Bark Veterinary Clinic - Appointment Prescriptions
@@ -70,7 +70,7 @@
                     <tr>
                         <th>Drug</th>
                         <th>Description</th>
-                        <th>Preparation</th>
+                        <th>Dosage</th>
                         <th>Qty</th>
                         <th class="text-center">Directions <br>
                             <span>(Breakfast --- Lunch --- Dinner)</span>

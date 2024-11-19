@@ -55,21 +55,30 @@ class UserController extends Controller
     }
 
     public function update(User $user)
-    {
-        if(request('option'))
-        {
-            // Activate || Deactivate User
-            request('option') == 'activate' ? $user->update(['is_activated' => 1]) : $user->update(['is_activated' => 0]);
+{
+    if (request()->has('option')) {
+        $option = request('option');
 
-            // email user
-           return  Mail::to($user)->send( new AccountUpdate($user));
+        // Activate or Deactivate User
+        if ($option === 'activate') {
+            $user->update(['is_activated' => 1]);
+        } elseif ($option === 'deactivate') {
+            $user->update(['is_activated' => 0]);
+        } else {
+            return response()->json(['error' => 'Invalid option'], 400);
         }
+
+        try {
+            // Email user
+            Mail::to($user)->send(new AccountUpdate($user));
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to send email: ' . $e->getMessage()], 500);
+        }
+
+        return response()->json(['success' => 'User updated successfully']);
     }
 
-    public function destroy(User $user)
-    {
-        $user->delete();
+    return response()->json(['error' => 'No option provided'], 400);
+}
 
-        return $this->res(['success' => 'Customer User Acount Deleted Successfully']);
-    }
 }

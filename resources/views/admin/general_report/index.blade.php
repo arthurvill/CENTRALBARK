@@ -213,9 +213,9 @@
                             <button class="btn btn-sm btn-primary">Filter</button>
 
                             @if ($patients_by_date_range_and_service->isNotEmpty())
-                                <a href="{{ route('admin.print.handle') }}?records=general_report"
+                                <!-- <a href="{{ route('admin.print.handle') }}?records=general_report"
                                     class="btn btn-sm btn-success">Print
-                                </a>
+                                </a> -->
                             @endif
 
                         </div>
@@ -223,7 +223,7 @@
                 </form>
                 <br>
                 {{-- Start Row --}}
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-12 col-md-12 d-flex align-self-stretch">
                         <div class="card w-100">
                             <div class="card-header ">
@@ -297,7 +297,7 @@
 
 
                     </div>
-                </div>
+                </div> -->
                 {{-- End Row --}}
 
                 <br>

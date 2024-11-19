@@ -59,17 +59,17 @@
 
                         @auth
                             @if (auth()->user()->hasRole('admin'))
-                                <!-- <li class="nav-item">
+                                <li class="nav-item">
                                     <a href="{{ route('admin.services.index') }}" class="nav-link" id="main_services">
                                         <span class="nav-link-inner--text">Services</span>
                                     </a>
-                                </li> -->
+                                </li>
                             @else
-                                <!-- <li class="nav-item">
+                                <li class="nav-item">
                                     <a href="{{ route('customer.services.index') }}" class="nav-link" id="main_services">
                                         <span class="nav-link-inner--text">Services</span>
                                     </a>
-                                </li> -->
+                                </li>
                             @endif
 
                             @if (auth()->user()->hasRole('admin'))
@@ -89,21 +89,21 @@
                         @endauth
 
                         @guest
-                            <!-- <li class="nav-item">
+                            <li class="nav-item">
                                 <a href="{{ route('customer.services.index') }}" class="nav-link" id="main_services">
                                     <span class="nav-link-inner--text">Services</span>
                                 </a>
                             </li>
-                            <a href="{{ route('customer.services.index') }}" class="nav-link">
+                            <!-- <a href="{{ route('customer.services.index') }}" class="nav-link">
                                 <span class="nav-link-inner--text"> Appointment</span>
-                            </a>
-                            </li> -->
+                            </a> -->
+                            </li>
                         @endguest
 
                         <li class="nav-item">
                             <a href="{{ route('main.pages.faqs') }}"
                                 class="nav-link @if (Route::is('main.pages.faqs')) active @endif">
-                                <span class="nav-link-inner--text">FAQS</span>
+                                <span class="nav-link-inner--text">Contact US</span>
                             </a>
                         </li>
 

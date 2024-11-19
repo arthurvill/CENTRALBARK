@@ -113,38 +113,71 @@
 
     {{-- Section 2 --}}
     <section class="py-2 py-md-5">
-        <div class="container">
-            <div class="row text-center pt-3">
-                <div class="col-lg-6 m-auto">
-                    <h1 class="d-md-block text-primary font-weight-bold">Our Services <i class="fas fa-clipboard-list ml-1"></i></h1>
-                    <p class="">We offer a comprehensive range of veterinary services designed to keep your pets healthy and thriving.</p>
-                </div>
-            </div>
-
-            <div class="row mt-3">
-                @foreach ($services as $service)
-                    <div class="col-md-4 col-lg-4 d-flex services align-self-stretch">
-                        <div class="card w-100 card-shadow-none hoverable rounded">
-                            <div class="card-body d-flex flex-column text-center text-small p-0">
-                                <img class="img-fluid d-block mx-auto" src="{{ asset('img/service/paw.png') }}" width="100" alt="service">
-                            </div>
-                            <div class="card-footer border-0 pt-1 pb-2 text-center">
-                                <h3 class="font-weight-bold">
-                                    <a href="{{ route('customer.services.schedules.index', $service) }}">{{ $service->name }}</a>
-                                </h3>
-                                <h4 class="font-weight-normal text-muted" data-toggle="tooltip" data-placement="right" title="{{ $service->description }}">
-                                    {{ textTruncate($service->description, '100') }}
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+    <div class="container">
+        <div class="row text-center pt-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="d-md-block text-primary font-weight-bold">Our Services <i class="fas fa-clipboard-list ml-1"></i></h1>
+                <p>We offer a comprehensive range of veterinary services designed to keep your pets healthy and thriving.</p>
             </div>
         </div>
-        <center>
-            <hr class="w-75">
-        </center>
-    </section>
+
+        <div class="row mt-3">
+            @foreach ($services as $service)
+                <div class="col-md-4 col-lg-4 d-flex services align-self-stretch">
+                    <div class="card w-100 card-shadow-none hoverable rounded"
+                         style="transition: transform 0.3s ease, box-shadow 0.3s ease !important;">
+                        <div class="card-body d-flex flex-column text-center text-small p-0">
+                            <img class="img-fluid d-block mx-auto" src="{{ asset('img/service/paw.png') }}" width="100" alt="service">
+                        </div>
+                        <div class="card-footer border-0 pt-1 pb-2 text-center">
+                            <h3 class="font-weight-bold">
+                                <a href="{{ route('customer.services.schedules.index', $service) }}">{{ $service->name }}</a>
+                            </h3>
+                            <h4 class="font-weight-normal text-muted" data-toggle="tooltip" data-placement="right" title="{{ $service->description }}">
+                                {{ textTruncate($service->description, '100') }}
+                            </h4>
+                            <!-- Book Now Button -->
+                            <a href="{{ route('customer.services.schedules.index', $service) }}"
+                               class="btn btn-primary mt-3"
+                               style="padding: 10px 20px; font-size: 13px; border-radius: 5px !important; transition: background-color 0.3s; background-color: #172b4d !important; border-color: #172b4d !important;">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    <center>
+        <hr class="w-75">
+    </center>
+</section>
+
+<!-- Inline hover styles -->
+<section>
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseover', () => {
+                card.style.transform = 'scale(1.05)';
+                card.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
+            });
+            card.addEventListener('mouseout', () => {
+                card.style.transform = 'scale(1)';
+                card.style.boxShadow = 'none';
+            });
+        });
+
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('mouseover', () => {
+                button.style.backgroundColor = '#0056b3';
+            });
+            button.addEventListener('mouseout', () => {
+                button.style.backgroundColor = '#172b4d';
+            });
+        });
+    </script>
+</section>
+
     {{-- End Section 2 --}}
     
     {{-- Section 4 --}}
@@ -164,7 +197,7 @@
     {{-- FAQ Section --}}
 <section class="my-5">
     <div class="container my-auto">
-    <h1 class="text-center text-primary font-weight-bold mb-4">FAQs
+    <h1 class="text-center text-primary font-weight-bold mb-4">Frequently Asked Questions
                 <i class="fas fa-question-circle"></i>
             </h1>
 
@@ -177,17 +210,17 @@
                     <div class="accordion" id="faqAccordion">
                         <!-- FAQ 1 -->
                         <div class="card faq-item">
-                            <div class="card-header p-0">
-                                <button class="btn btn-link p-0 text-left w-100" type="button" data-toggle="collapse" data-target="#faq1" aria-expanded="true" aria-controls="faq1">
-                                    <h3 class="font-weight-normal">Where is your clinic located?</h3>
-                                </button>
-                            </div>
-                            <div id="faq1" class="collapse show" data-parent="#faqAccordion">
-                                <div class="card-body text-muted">
-                                    We’re located at Tungkop, Minglanilla, Cebu, Philippines.
-                                </div>
-                            </div>
-                        </div>
+    <div class="card-header p-0">
+        <button class="btn btn-link p-0 text-left w-100" type="button" data-toggle="collapse" data-target="#faq1" aria-expanded="false" aria-controls="faq1">
+            <h3 class="font-weight-normal">Where is your clinic located?</h3>
+        </button>
+    </div>
+    <div id="faq1" class="collapse" data-parent="#faqAccordion">
+        <div class="card-body text-muted">
+            We’re located at Tungkop, Minglanilla, Cebu, Philippines.
+        </div>
+    </div>
+</div>
 
                         <!-- FAQ 2 -->
                         <div class="card faq-item">
@@ -262,7 +295,7 @@
             transition: all 0.3s ease;
         }
         .faq-item:hover {
-            background-color: #f8f9fa;
+            background-color: #f8f9fa;  
             border-radius: 5px;
         }
 

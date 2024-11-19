@@ -24,6 +24,7 @@
             <div class="col-md-4 d-flex align-self-stretch">
                 <div class="card w-100">
                     <div class="card-body d-flex and flex-column">
+                    <br>
                         <img class="img-fluid rounded-circle" src="{{ handleNullAvatarForPet($pet->avatar_profile) }}"
                             width="150" alt="avatar">
                         <br>

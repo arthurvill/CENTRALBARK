@@ -14,33 +14,37 @@
         <br><br>
 
         {{-- Row 1 --}}
-        <div class="row">
-            <div class="col-md-6">
-                <span>Pet: {{ $results[0]->booking->pet->name }}</span> <br>
-                <span>Breed: {{ $results[0]->booking->pet->breed }}</span>
+        @if (!empty($results) && isset($results[0]))
+            <div class="row">
+                <div class="col-md-6">
+                    <span>Pet: {{ $results[0]->booking->pet->name }}</span> <br>
+                    <span>Breed: {{ $results[0]->booking->pet->breed }}</span>
+                </div>
+                <div class="col-md-6 text-right">
+                    <span>Owner: {{ $results[0]->booking->pet->customer->full_name }}</span> <br>
+                    <span> Date Schedule: {{ formatDate($results[0]->booking->schedule->date_time_start) }}
+                        at {{ formatDate($results[0]->booking->schedule->date_time_start, 'time') }}
+                        - {{ formatDate($results[0]->booking->schedule->date_time_end, 'time') }}
+                    </span>
+                </div>
             </div>
-            <div class="col-md-6 text-right">
-                <span>Owner: {{ $results[0]->booking->pet->customer->full_name }}</span> <br>
-                <span> Date Schedule: {{ formatDate($results[0]->booking->schedule->date_time_start) }}
-                    at {{ formatDate($results[0]->booking->schedule->date_time_start, 'time') }}
-                    - {{ formatDate($results[0]->booking->schedule->date_time_end, 'time') }}
-                </span>
-            </div>
-        </div>
 
-        {{-- Row 2 --}}
-        <div class="row">
-            <div class="col-md-8">
-                Birthday: {{ formatDate($results[0]->booking->pet->birth_date) }}
-            </div>
-            <div class="col-md-4 text-right">
-                Age: {{ getPetAge($results[0]->booking->pet->birth_date) }}
+            {{-- Row 2 --}}
+            <div class="row">
+                <div class="col-md-8">
+                    Birthday: {{ formatDate($results[0]->booking->pet->birth_date) }}
+                </div>
+                <div class="col-md-4 text-right">
+                    Age: {{ getPetAge($results[0]->booking->pet->birth_date) }}
 
-                <span class="ml-3">
-                    Sex: {{ $results[0]->booking->pet->customer->sex }}
-                </span>
+                    <span class="ml-3">
+                        Sex: {{ $results[0]->booking->pet->customer->sex }}
+                    </span>
+                </div>
             </div>
-        </div>
+        @else
+            <p>No results available for this booking.</p>
+        @endif
 
         <br>
         <form class="d-print-none " action="{{ route('staff.print.handle') }}" method="GET">
@@ -65,7 +69,6 @@
                     <th>Subject</th>
                     <th>Remark</th>
                     <th>Date</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -78,12 +81,11 @@
                     </tr>
                 @empty
                     <tr>
-                        <td>Records Not Found</td>
+                        <td colspan="4" class="text-center">No records found.</td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"

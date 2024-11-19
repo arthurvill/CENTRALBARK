@@ -23,9 +23,8 @@
 
 
         <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            We kindly request a P200 convenience charge to secure your slot. Please understand that this fee is
-            non-refundable if you miss your appointment. If you need to reschedule, please reach out to our friendly
-            customer support, which is provided at no cost. Your cooperation and support help us maintain an efficient
+            We kindly request a P50 convenience charge to secure your slot. Please understand that this fee is
+            non-refundable if you miss your appointment.If you need to reschedule, feel free to contact our friendly customer support at 0922 451 3582. Your cooperation and support help us maintain an efficient
             appointment system to serve you and all our customers better. Thank you for choosing our services!
 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">

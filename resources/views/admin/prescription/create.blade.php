@@ -33,7 +33,7 @@
                                         <input class="form-control" type="text" name="description">
                                     </div>
                                     <div class="form-group mb-2">
-                                        <label class="form-label">Prep</label>
+                                        <label class="form-label">Dosage</label>
                                         <input class="form-control" type="text" name="preparation">
                                     </div>
                                     <div class="form-group mb-2">

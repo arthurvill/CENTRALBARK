@@ -34,59 +34,58 @@
                         <li class="nav-item">
                             <a href="{{ route('main.pages.about') }}"
                                 class="nav-link @if (Route::is('main.pages.about')) active @endif">
-                                <span class="nav-link-inner--text">About</span>
+                                <span class="nav-link-inner--text">About Us</span>
                             </a>
                         </li>
 
 
                         @auth
                             @if (auth()->user()->hasRole('admin'))
-                                <!-- <li class="nav-item">
+                                <li class="nav-item">
                                     <a href="{{ route('admin.services.index') }}" class="nav-link" id="main_services">
                                         <span class="nav-link-inner--text">Services</span>
                                     </a>
-                                </li> -->
+                                </li>
                             @else
-                                <!-- <li class="nav-item">
+                                <li class="nav-item">
                                     <a href="{{ route('customer.services.index') }}" class="nav-link" id="main_services">
                                         <span class="nav-link-inner--text">Services</span>
                                     </a>
-                                </li> -->
+                                </li>
                             @endif
 
-                            {{-- @if (auth()->user()->hasRole('admin'))
+                            @if (auth()->user()->hasRole('admin'))
                                 <!-- <li class="nav-item">
                                     <a href="{{ route('admin.bookings.index') }}" class="nav-link">
                                         <span class="nav-link-inner--text"> Appointment</span>
                                     </a>
                                 </li> -->
                             @else
-                                <!-- <li class="nav-item">
-                                    <a href="{{ route('customer.services.index') }}" class="nav-link">
+                                <li class="nav-item">
+                                    <!-- <a href="{{ route('customer.services.index') }}" class="nav-link">
                                         <span class="nav-link-inner--text"> Appointment</span>
-                                    </a>
-                                </li> -->
-                            @endif --}}
+                                    </a> -->
+                                </li>
+                            @endif
 
                         @endauth
 
                         @guest
-                            <!-- <li class="nav-item">
+                            <li class="nav-item">
                                 <a href="{{ route('customer.services.index') }}" class="nav-link" id="main_services">
                                     <span class="nav-link-inner--text">Services</span>
                                 </a>
-                            </li> -->
-
-                            <!-- {{-- <a href="{{ route('customer.services.index') }}" class="nav-link">
+                            </li>
+                            <!-- <a href="{{ route('customer.services.index') }}" class="nav-link">
                                 <span class="nav-link-inner--text"> Appointment</span>
-                            </a> --}}
-                            </li> -->
+                            </a> -->
+                            </li>
                         @endguest
 
                         <li class="nav-item">
                             <a href="{{ route('main.pages.faqs') }}"
                                 class="nav-link @if (Route::is('main.pages.faqs')) active @endif">
-                                <span class="nav-link-inner--text">FAQS</span>
+                                <span class="nav-link-inner--text">Contact Us</span>
                             </a>
                         </li>
 
@@ -94,15 +93,14 @@
                     </ul>
 
                 <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-                @guest
-    <li class="nav-item">
-        <a href="{{ route('auth.login') }}" class="nav-link @if (Route::is('auth.login')) active @endif">Login</a>
-    </li>
-    <li class="nav-item">
-        <a href="{{ route('auth.register') }}" class="nav-link @if (Route::is('auth.register')) active @endif">Register</a>
-    </li>
-@endguest
-
+                    @guest
+                        <li class="nav-item">
+                        <a href="{{ route('auth.login') }}" class="nav-link @if (Route::is('auth.login')) active @endif">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('auth.register') }}" class="nav-link">Register</a>
+                        </li>
+                    @endguest
 
                     @auth
                         <li class="nav-item dropdown">
@@ -162,7 +160,7 @@
                     <div class="row g-0">
                         <div class="col-md-6 col-lg-6 d-none d-md-block my-auto">
                             <img src="{{ asset('img/auth/vet.svg') }}" alt="login" class="img-fluid"
-                                style="border-radius: 1rem 0 0 1rem;" />
+                                style="border-radius: 1rem 0 0 1rem;"/>
                         </div>
                         <div class="col-md-6 col-lg-6 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">

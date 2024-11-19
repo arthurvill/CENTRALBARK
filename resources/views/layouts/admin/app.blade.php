@@ -43,9 +43,12 @@
             <div class="navbar-inner">
                 <!-- Collapse -->
                 <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-                    <h5 class="font-weight-normal p-0 text-muted mt-2 mt-md-0 mb-1">
-                        Dr. {{ auth()->user()->name }}
-                    </h5>
+    <h5 class="font-weight-bold p-0 text-muted mt-2 mt-md-0 mb-1" 
+        style="font-size: 15px !important; color: black !important; margin-bottom: 20px !important;">
+        Dr. {{ auth()->user()->name }}
+    </h5>
+</div>
+
                     <!-- Nav items -->
                     <ul class="navbar-nav">
                         <li class="nav-item">

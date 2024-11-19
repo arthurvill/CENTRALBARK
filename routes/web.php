@@ -150,6 +150,7 @@ Route::group(['middleware' => ['auth', 'staff'], 'prefix' => 'staff', 'as' => 's
    /** Start User Management */
        Route::resource('customers', StaffCustomerController::class);
        Route::resource('users', StaffUserController::class);
+       
    /** End User Management */
 
    

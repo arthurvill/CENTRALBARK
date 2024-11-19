@@ -8,7 +8,7 @@
     <div class="container-fluid py-4">
         @include('layouts.includes.alert')
 
-        <form>
+        <!-- <form>
             <div class="form-group">
                 <select class="form-control form-control-sm">
                     <option>--- All Category --- </option>
@@ -17,7 +17,7 @@
                     @endforeach
                 </select>
             </div>
-        </form>
+        </form> -->
 
         <div class="row justify-content-center">
             <div class="col-md-12">

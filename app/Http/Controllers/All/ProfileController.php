@@ -12,48 +12,61 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return match(auth()->user()->role->name) {
+        return match (auth()->user()->role->name) {
             'admin' => view('admin.profile.index'),
             'staff' => view('staff.profile.index'),
             'customer' => view('customer.profile.index'),
         };
     }
 
-    public function update(Request $request , User $user)
+    public function update(Request $request, User $user)
     {
-        if($request->avatar)
-        {
-            $avatar = $user->getFirstMedia('avatar_image');
+        // Validate input
+        $data = $request->validate([
+            'name' => 'nullable|string|max:255',
+            'email' => 'nullable|email|max:255|unique:users,email,' . $user->id,
+            'old' => 'sometimes|required_with:password',
+            'password' => 'sometimes|confirmed|min:6|max:15',
+            'avatar' => 'nullable|string',
+        ]);
 
-            $user->avatar_profile ? $avatar->delete() : '';
-            
-            $user->addMedia(storage_path('app/public/tmp/'. request('avatar')))->toMediaCollection('avatar_image');
-
-            TmpImage::where('filename', $request->avatar)->delete(); // get the tmp image from the db
+        // Update Name and Email
+        if ($request->hasAny(['name', 'email'])) {
+            $user->update([
+                'name' => $data['name'] ?? $user->name,
+                'email' => $data['email'] ?? $user->email,
+            ]);
 
             return back()->with(['message' => 'Profile Updated Successfully']);
         }
 
-        // update only the password if there is a request
-        if($request->password && $request->old) 
-        {
-            $data = $request->validate([
-                'old' => 'sometimes',
-                'password' => 'sometimes|confirmed|min:6|max:15'
-            ]);
-            
-            if(!Hash::check($request->old, $user->password))
-            {
+        // Update Avatar
+        if ($request->avatar) {
+            $avatar = $user->getFirstMedia('avatar_image');
+
+            $user->avatar_profile ? $avatar->delete() : '';
+
+            $user->addMedia(storage_path('app/public/tmp/' . $request->avatar))->toMediaCollection('avatar_image');
+
+            TmpImage::where('filename', $request->avatar)->delete();
+
+            return back()->with(['message' => 'Avatar Updated Successfully']);
+        }
+
+        // Update Password
+        if ($request->password && $request->old) {
+            if (!Hash::check($request->old, $user->password)) {
                 return back()->with(['error' => 'The old password you entered is invalid']);
             }
 
-            $user->update(['password' => $data['password']]); // update password [hashed]
-            
+            $user->update(['password' => Hash::make($data['password'])]);
+
             auth()->setUser($user);
 
             return back()->with(['message' => 'Password Updated Successfully']);
         }
-        
-        return back()->with(['error' => 'The avatar or password field is required']);
+
+        // Default fallback message
+        return back()->with(['error' => 'No changes were made to the profile.']);
     }
 }

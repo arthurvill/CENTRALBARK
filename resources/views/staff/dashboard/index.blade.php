@@ -11,12 +11,12 @@
             <div class="header-body">
                 <!-- Start Appointments Counts -->
                 <div class="row mt-3">
-                    <div class="col-xl-3 col-md-6 d-flex align-self-stretch">
+                <div class="col-xl-3 col-md-6 d-flex align-self-stretch" style="flex: 0 0 50%; max-width: 50%;">
                         <div class="card card-stats w-100">
                             <!-- Card body -->
                             <div class="card-body d-flex and flex-column">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col" style=text-align:center;!important>
                                         <h5 class="card-title text-uppercase text-muted mb-0">Total Appointment</h5>
                                         <span class="h2 font-weight-bold mb-0">{{ $total_booking }}</span>
                                     </div>
@@ -30,12 +30,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6 d-flex align-self-stretch">
+                    <div class="col-xl-3 col-md-6 d-flex align-self-stretch" style="flex: 0 0 50%; max-width: 50%;">
                         <div class="card card-stats w-100">
                             <!-- Card body -->
                             <div class="card-body d-flex and flex-column">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col"style=text-align:center;!important>
                                         <h5 class="card-title text-uppercase text-muted mb-0">Total Pending Appointment</h5>
                                         <span class="h2 font-weight-bold mb-0">{{ $total_pending_booking }}</span>
                                     </div>
@@ -48,10 +48,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6 d-flex align-self-stretch">
-                        <div class="card card-stats w-100">
+                    <!-- <div class="col-xl-3 col-md-6 d-flex align-self-stretch">
+                        <div class="card card-stats w-100"> -->
                             <!-- Card body -->
-                            <div class="card-body d-flex and flex-column">
+                            <!-- <div class="card-body d-flex and flex-column">
                                 <div class="row">
                                     <div class="col">
                                         <h5 class="card-title text-uppercase text-muted mb-0">Total Approved Appointment
@@ -69,9 +69,9 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6 d-flex align-self-stretch">
-                        <div class="card card-stats w-100">
+                        <div class="card card-stats w-100"> -->
                             <!-- Card body -->
-                            <div class="card-body d-flex and flex-column">
+                            <!-- <div class="card-body d-flex and flex-column">
                                 <div class="row">
                                     <div class="col">
                                         <h5 class="card-title text-uppercase text-muted mb-0">Total Canceled Appointment
@@ -87,7 +87,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!--End Appointment Count-->
 
@@ -296,7 +296,7 @@
             data: {
                 labels: months,
                 datasets: [{
-                    label: 'Monthly User',
+                    label: 'Monthly Customer',
                     data: total_users,
                     backgroundColor: bgc
                 }],

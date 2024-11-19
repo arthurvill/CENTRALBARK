@@ -3,12 +3,88 @@
 @section('title', 'Staff | Manage Booking')
 
 @section('styles')
-    <style>
-        td {
-            white-space: normal !important;
-            text-align: justify;
-        }
-    </style>
+<style>
+    /* Adjust image size */
+    /* Adjust image size and alignment */
+     /* Adjust image size and alignment to complement pet details */
+     .img-avatar {
+        width: 100% !important; /* Make image responsive to container width */
+        max-width: 500px !important; /* Set max width to fit nicely with the text */
+        height: auto !important; /* Maintain aspect ratio */
+        object-fit: cover !important; /* Ensure the image fills the container */
+        border-radius: 8px !important; /* Rounded corners to match design */
+        border: 2px solid #ddd !important; /* Light border for separation */
+        margin-bottom: 1rem !important; /* Space below the image */
+    }
+
+    /* Align pet details text to complement image */
+    .details-section .col-md-8 {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important; /* Align text to the top */
+        padding-left: 20px !important; /* Add padding to space the text */
+    }
+
+    /* Align the image and pet details side by side */
+    .details-section .col-md-4 {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Center image horizontally */
+        justify-content: flex-start !important; /* Align image at the top */
+    }
+    /* Card styling */
+    .card {
+        border: 1px solid #ddd !important;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+        overflow: hidden !important;
+    }
+
+    .card-body {
+        padding: 1.5rem !important;
+    }
+
+    /* Typography */
+    h4 {
+        /* font-size: 1.2rem !important; */
+        line-height: 1.5 !important;
+    }
+
+    .font-weight-bold {
+        color: #333 !important;
+    }
+
+    /* Status badge styling */
+    .badge {
+        /* font-size: 0.85rem !important; */
+        border-radius: 12px !important;
+    }
+
+    .badge.bg-primary {
+        background-color: #007bff !important;
+    }
+
+    .badge.bg-success {
+        background-color: #28a745 !important;
+    }
+
+    .badge.bg-danger {
+        background-color: #dc3545 !important;
+    }
+
+    /* Buttons */
+    .btn-primary {
+        background-color: #007bff !important;
+        border-color: #007bff !important;
+        transition: background-color 0.3s ease, transform 0.2s ease !important;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3 !important;
+        transform: scale(1.05) !important;
+    }
+    
+</style>
 @endsection
 
 
@@ -35,85 +111,50 @@
                 <div class="card">
                     <div class="card-body pt-3">
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="row text-md-start py-3">
-                                    <div class="col-md-8 font-weight-normal">
-                                        <img class="img-fluid rounded-circle mx-1"
+                            <div class="col-md-8">
+                                <div class="row text-md-start py-3 details-section">
+                                    <div class="col-md-4">
+                                        <img class="img-avatar rounded-circle mx-1"
                                             src="{{ handleNullAvatarForPet($booking->pet?->avatar_profile) }}"
-                                            width="75" alt="avatar"> <br><br>
-
-                                        <h4 class="font-weight-normal">Pet :
-                                            <span class="font-weight-bold ">{{ $booking->pet->name }}</span>
-                                        </h4>
-
-                                        <h4 class="font-weight-normal">Breed :
-                                            <span class="font-weight-bold ">{{ $booking->pet->breed }}</span>
-                                        </h4>
-
-                                        <h4 class="font-weight-normal">Sex :
-                                            <span class="font-weight-bold ">{{ $booking->pet->sex }}</span>
-                                        </h4>
-
-                                        <h4 class="font-weight-normal">Owner :
-                                            <span class="font-weight-bold ">{{ $booking->pet->customer->full_name }}</span>
-                                        </h4>
-
-                                        <h4 class="font-weight-normal">Service :
-                                            <span class="font-weight-bold ">{{ $booking->schedule->service->name }}</span>
-                                        </h4>
-
-                                        <h4 class="font-weight-normal">Date Schedule : <span
-                                                class="font-weight-bold ">{{ formatDate($booking->schedule->date_time_start) }}
-                                                <i class="far fa-calendar ms-1"></i></span>
-                                        </h4>
-                                        <h4 class="font-weight-normal">at <span
-                                                class="font-weight-bold ">{{ formatDate($booking->schedule->date_time_start, 'time') }}
-                                                - {{ formatDate($booking->schedule->date_time_end, 'time') }}
-                                                <i class="far fa-clock ms-1"></i>
-                                            </span>
-                                        </h4>
-
-                                        <h4 class="font-weight-normal">Customer's Note :
-                                            <span class="font-weight-bold ">{{ $booking->note ?? 'N/A' }}</span>
-                                        </h4>
+                                            alt="avatar">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h4 class="font-weight-normal">Pet: <span class="font-weight-bold">{{ $booking->pet->name }}</span></h4>
+                                        <h4 class="font-weight-normal">Breed: <span class="font-weight-bold">{{ $booking->pet->breed }}</span></h4>
+                                        <h4 class="font-weight-normal">Sex: <span class="font-weight-bold">{{ $booking->pet->sex }}</span></h4>
+                                        <h4 class="font-weight-normal">Owner: <span class="font-weight-bold">{{ $booking->pet->customer->full_name }}</span></h4>
+                                        <h4 class="font-weight-normal">Service: <span class="font-weight-bold">{{ $booking->schedule->service->name }}</span></h4>
+                                        <h4 class="font-weight-normal">Date Schedule: <span class="font-weight-bold">{{ formatDate($booking->schedule->date_time_start) }} <i class="far fa-calendar ms-1"></i></span></h4>
+                                        <h4 class="font-weight-normal">At: <span class="font-weight-bold">{{ formatDate($booking->schedule->date_time_start, 'time') }} - {{ formatDate($booking->schedule->date_time_end, 'time') }} <i class="far fa-clock ms-1"></i></span></h4>
+                                        <h4 class="font-weight-normal">Customer's Note: <span class="font-weight-bold">{{ $booking->note ?? 'N/A' }}</span></h4>
 
                                         {{-- Status --}}
-                                        <h4 class=" font-weight-normal">Status - {!! handleBookingStatus($booking->status) !!}</h4>
+                                        <h4 class="font-weight-normal">Status: {!! handleBookingStatus($booking->status) !!}</h4>
+
                                         @if ($booking->remark)
-                                            <h4 class="font-weight-normal">
-                                                Remark: {{ $booking->remark }}
-                                            </h4>
+                                            <h4 class="font-weight-normal">Remark: {{ $booking->remark }}</h4>
                                         @endif
 
-                                        {{-- If booking is thru online --}}
+                                        {{-- Payment Information Below the Status --}}
                                         @if ($booking->is_online)
-                                            <h4 class="mt-2 font-weight-light">Control No : <span
-                                                    class="font-weight-bold">{{ $booking->reference_no }}</span>
-                                            </h4>
-                                            <h4 class="mt-2 font-weight-light">Paid Via : <span
-                                                    class="badge bg-primary p-2 text-white">{{ $booking->payment_method->type }}</span>
-                                            </h4>
+                                            <h4 class="font-weight-normal">Control No: <span class="font-weight-bold">{{ $booking->reference_no }}</span></h4>
+                                            <h4 class="font-weight-normal">Paid Via: <span class="badge bg-primary p-2 text-white">{{ $booking->payment_method->type }}</span></h4>
 
-                                            <a class="text-primary" data-toggle="collapse" href="#collapseExample"
-                                                role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <a class="text-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                                 View Payment Receipt
                                             </a>
 
                                             <div class="collapse mt-3" id="collapseExample">
-                                                <a class="glightbox"
-                                                    href="{{ handleNullImage($booking->payment_receipt) }}">
-                                                    <img class="img-thumbnail"
-                                                        src="{{ handleNullImage($booking->payment_receipt) }}"
-                                                        width="100" alt="payment receipt">
+                                                <a class="glightbox" href="{{ handleNullImage($booking->payment_receipt) }}">
+                                                    <img class="img-thumbnail" src="{{ handleNullImage($booking->payment_receipt) }}" width="100" alt="payment receipt">
                                                 </a>
                                             </div>
                                         @endif
-
-                                        <br>
                                     </div>
-
                                 </div>
-
+                            </div>
+                            {{-- Right Section for Manage Booking and Move Schedule --}}
+                            <div class="col-md-4 info-section">
                                 {{-- Check for Approval --}}
                                 {{-- @if ($booking->status == 0) --}}
                                 <div class="nav-wrapper">
@@ -322,7 +363,7 @@
                                     <tr>
                                         <th>Drug</th>
                                         <th>Description</th>
-                                        <th>Preparation</th>
+                                        <th>Dosage</th>
                                         <th>Qty</th>
                                         <th>Directions</th>
                                         <th>Date</th>

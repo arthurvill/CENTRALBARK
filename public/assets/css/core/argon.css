@@ -426,7 +426,7 @@ h6,
 
     margin-bottom: 0.5rem;
 
-    color: #3498db;
+    color: #040608;
 }
 
 h1,
@@ -5678,8 +5678,8 @@ a.badge:focus {
 
 .alert-primary {
     color: #fff;
-    border-color: #7889e8;
-    background-color: #7889e8;
+    border-color: #f5365c;
+    background-color: #f5365c;
 }
 .alert-primary a {
     font-weight: 600;
@@ -5758,8 +5758,8 @@ a.badge:focus {
 
 .alert-warning {
     color: #fff;
-    border-color: #fc7c5f;
-    background-color: #fc7c5f;
+    border-color: #7889e8;
+    background-color: #7889e8;
 }
 .alert-warning a {
     font-weight: 600;
@@ -7243,7 +7243,7 @@ button.bg-warning:focus {
 }
 
 .bg-danger {
-    background-color: #f5365c !important;
+    background-color: rgb(251, 99, 64) !important;
 }
 
 a.bg-danger:hover,

@@ -44,7 +44,7 @@ class BookingService {
             'apikey' => config('app.sms_key'), 
             'number' => $customer->contact,
             'message' => $message,
-            'sendername' => 'THESIS'
+            'sendername' => 'Central Bark'
         );
 
         curl_setopt( $ch, CURLOPT_URL,'https://semaphore.co/api/v4/messages' );
