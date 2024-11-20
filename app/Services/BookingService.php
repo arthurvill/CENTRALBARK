@@ -75,7 +75,9 @@ class BookingService {
         $message = match($booking->status) {
             "1" => "Hi! $customer->full_name, your requested appointment schedule has been approved. Schedule: $schedule \n For more info visit the link $route - Central Bark Veterinary Clinic",
             "2" => "Hi! $customer->full_name, unfortunately your requested appointment schedule has been declined. For more info visit the link $route - Central Bark Veterinary Clinic",
+            default => "Hi! $customer->full_name, there has been an update to your appointment schedule. Please check for more details: $route - Central Bark Veterinary Clinic",
         };
+        
 
         $ch = curl_init();
         $parameters = array(
